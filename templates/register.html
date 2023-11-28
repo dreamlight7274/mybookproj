@@ -1,0 +1,29 @@
+{% extends "base-user.html" %}
+{% block title %}Sign up{% endblock %}
+
+{% block body %}
+    <div class="login-main">
+        <header class="layui-elip">Create an Account</header>
+        <form class="layui-form" method="post" action="{{ url_for('user.register') }}">
+            {{ form.csrf_token }}
+            <div class="layui-input-inline">
+                {{ form.user_name(class="layui-input",placeholder="your name") }}
+            </div>
+            <div class="layui-input-inline">
+                {{ form.account(class="layui-input",placeholder="account id") }}
+            </div>
+            <div class="layui-input-inline">
+                {{ form.password(class="layui-input",placeholder="password") }}
+            </div>
+            <div class="layui-input-inline">
+                {{ form.repeat_password(class="layui-input",placeholder="repeat password") }}
+            </div>
+            <div class="layui-input-inline login-btn">
+                {{ form.submit(class="layui-btn") }}
+            </div>
+            <hr/>
+            <p><a href="{{ url_for('user.login') }}" class="fl">Sign in</a></p>
+        </form>
+
+    </div>
+{% endblock %}

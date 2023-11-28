@@ -1,0 +1,125 @@
+{# complete #}
+{% extends 'base.html' %}
+{% block title %}Upload books{% endblock %}
+
+{% block body %}
+
+    <fieldset class="layui-elem-field layui-field-title">
+    <legend>Upload book</legend>
+    <div class="layui-container" style="margin-top: 50px;">
+    <form class="layui-form" action="/book/add_newbook" method="post" enctype="multipart/form-data">
+        <div class="layui-form-item">
+            <label class="layui-form-label">book picture</label>
+            <button type="button" class="layui-btn" id="ID-upload-demo-btn">
+              <i class="layui-icon layui-icon-upload"></i> Upload picture
+            </button>
+            <div style="width: 132px;">
+              <div class="layui-upload-list">
+                <img class="layui-upload-img" id="ID-upload-demo-img" style="width: 100%; height: 92px;">
+                <div id="ID-upload-demo-text"></div>
+              </div>
+              <div class="layui-progress layui-progress-big" lay-showPercent="yes" lay-filter="filter-demo">
+                <div class="layui-progress-bar" lay-percent=""></div>
+{#       show the percentage           #}
+              </div>
+            </div>
+        </div>
+{# style="display: none" #}
+        <div class="layui-form-item" >
+            <label class="layui-form-label">book name</label>
+            <div class="layui-input-block">
+                <input type="text" name="pic_name" placeholder="input the picture" class="layui-input" id="picinput">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book name</label>
+            <div class="layui-input-block">
+                <input type="text" name="book_name" required lay-verify="required" placeholder="Please enter the book name" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">ISBN</label>
+            <div class="layui-input-block">
+                <input type="text" name="isbn" required lay-verify="required" placeholder="Please enter the ISBN number" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">author</label>
+            <div class="layui-input-block">
+                <input type="text" name="author" required lay-verify="required" placeholder="Please enter the author name" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">book introduction</label>
+            <div class="layui-input-block">
+                <textarea name="introduction" required lay-verify="required" placeholder="Please enter the book introduction" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+    </fieldset>
+
+    <script src="/static/layui/layui.js"></script>
+<script src="/static/css/layui.css"></script>
+<script src="/static/jquery.3.6.min.js"></script>
+<script>
+layui.use(function(){
+  var upload = layui.upload;
+  var layer = layui.layer;
+  var element = layui.element;
+  var $ = layui.$;
+  // upload the picture
+  var uploadInst = upload.render({
+    elem: '#ID-upload-demo-btn',
+    url: '/book/uploading', // upload url
+    before: function(obj){
+      // preview the local picture
+      obj.preview(function(index, file, result){
+        $('#ID-upload-demo-img').attr('src', result); // address of image
+      });
+
+      element.progress('filter-demo', '0%'); // progress zoro
+      layer.msg('Uploading', {icon: 16, time: 0});
+    },
+    done: function(res){
+      // if there are something wrong
+      if(res.code > 0){
+        return layer.msg('Upload failed');
+      }
+      // success
+      // …
+      $('#ID-upload-demo-text').html(''); // clean the error message
+        var inputElement = document.getElementById('picinput');
+
+        // add the input value automatically
+        inputElement.value = res.pic;
+    },
+    error: function(){
+      var demoText = $('#ID-upload-demo-text');
+      demoText.html('<span style="color: #FF5722;">Upload failed</span> <a class="layui-btn layui-btn-xs demo-reload">retry</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    },
+    // progress
+    progress: function(n, elem, e){
+      element.progress('filter-demo', n + '%'); // layui progress
+      if(n == 100){
+        layer.msg('Upload completed', {icon: 1});
+      }
+    }
+  });
+  });
+</script>
+{% endblock %}
+

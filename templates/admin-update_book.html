@@ -1,0 +1,77 @@
+{# complete #}
+{% extends 'base.html' %}
+{% block title %}update book info{% endblock %}
+
+{% block body %}
+    <fieldset class="layui-elem-field layui-field-title">
+    <legend>update book info</legend>
+<div class="layui-container" style="margin-top: 50px;">
+    <form class="layui-form" action="/book/update_book" method="post">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book id</label>
+            <div class="layui-input-block">
+                <input type="text" name="book_id" required lay-verify="required" placeholder="input book id(book id couldn't be changed)" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book isbn</label>
+            <div class="layui-input-block">
+                <input type="text" name="isbn" placeholder="input book isbn" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book name</label>
+            <div class="layui-input-block">
+                <input type="text" name="book_name" placeholder="input book name" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book author</label>
+            <div class="layui-input-block">
+                <input type="text" name="author" placeholder="input book author" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book introduction</label>
+            <div class="layui-input-block">
+                <textarea name="intr" placeholder="Please enter the book introduction" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+    </fieldset>
+{# delete #}
+    <fieldset class="layui-elem-field layui-field-title">
+<legend>delete book</legend>
+<div class="layui-container" style="margin-top: 50px;">
+    <form class="layui-form" action="/book/delete_book" method="post">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">book id</label>
+            <div class="layui-input-block">
+                <input type="text" name="book_id" required lay-verify="required" placeholder="input book id" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">delete</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+    </fieldset>
+{% endblock %}

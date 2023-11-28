@@ -1,0 +1,40 @@
+{# complete #}
+{% extends 'base.html' %}
+{% block title %}add user{% endblock %}
+
+{% block body %}
+    <fieldset class="layui-elem-field layui-field-title">
+    <legend>add user</legend>
+<div class="layui-container" style="margin-top: 50px;">
+    <form class="layui-form" action="/user/add_user" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">user name</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" required lay-verify="required" placeholder="input user name" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">account id</label>
+            <div class="layui-input-block">
+                <input type="text" name="account_number" required lay-verify="required" placeholder="input account id" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">password</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" required lay-verify="required" placeholder="input password" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">register</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+    </fieldset>
+{% endblock %}
