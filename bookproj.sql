@@ -76,7 +76,8 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (7,'fi9239304490732','dascadscascadsc','interlude_fubuki.png','dfadnfljadnfd','dsafopofjoeprjfprjpejphvierhwnvoernowuerfre','2023-11-28 10:33:04','2023-11-28 10:33:04'),(8,'hfuewhiew','2077','photomode_17012022_172225.png','I don\'t know','efdqewfqqewffeqwfewqfqwef','2023-11-28 10:34:05','2023-11-28 10:34:05'),(10,'8D3DEDE883','Dark soul','T1.jpg','I don\'t know','It\'s so interesting','2023-11-28 10:38:07','2023-11-28 10:38:07');
+INSERT INTO `book` VALUES (1,'12345','polish cuisin','824cc3980944eca836408c9888e0302.png','Author1','food qwqrhjkljdsdffhjkkjhgfdsasdfgghjk','2023-12-01 19:51:18','2023-12-01 19:51:18'),(5,'12345q','Autumn','219644680472dfeba8c6485fd81045a.png','Author2','memory iwqowidnaldsamniusknajkj','2023-12-01 19:56:53','2023-12-01 19:56:53'),(6,'12345w','French cuisine','a8cfbb091d64857ca4156d9e7c41fba.png','Author3','french food  dmiwaindjakndakdnajk','2023-12-01 19:57:36','2023-12-01 19:57:36'),(7,'12345e','Dishes','af0ea40b99531d21f30d66c3e918b55.png','Author4','dishes wkmdiaondskaklmcalkiwed','2023-12-01 19:58:16','2023-12-01 19:58:16');
+
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
